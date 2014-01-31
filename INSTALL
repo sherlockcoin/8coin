@@ -1,0 +1,9 @@
+Building 8Coin
+
+See doc/readme-qt.rst for instructions on building 8coin-qt,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of 8Coin.
+
+See doc/build-*.txt for instructions on building 8coin,
+the intended-for-services, no-graphical-interface, reference
+implementation of 8Coin.
