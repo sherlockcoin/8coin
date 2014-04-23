@@ -70,7 +70,7 @@ OBJS= \
     obj/walletdb.o \
     obj/noui.o
 
-all: 8coin.exe
+all: 8coind.exe
 
 obj/scrypt.o: scrypt.c
 	i586-mingw32msvc-gcc -c $(CFLAGS) -o $@ $^
@@ -83,7 +83,7 @@ DEFS += -DHAVE_BUILD_INFO
 obj/%.o: %.cpp $(HEADERS)
 	i586-mingw32msvc-g++ -c $(CFLAGS) -o $@ $<
 
-8coin.exe: $(OBJS:obj/%=obj/%)
+8coind.exe: $(OBJS:obj/%=obj/%)
 	i586-mingw32msvc-g++ $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
@@ -97,7 +97,7 @@ test_8coin.exe: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
 
 clean:
 	-rm -f obj/*.o
-	-rm -f 8coin.exe
+	-rm -f 8coind.exe
 	-rm -f obj-test/*.o
 	-rm -f test_8coin.exe
 	-rm -f src/build.h

@@ -15,10 +15,10 @@ LIBPATHS= \
  -L"C:\deps\ssl"
 
 LIBS= \
- -l boost_system-mgw46-mt-s-1_49 \
- -l boost_filesystem-mgw46-mt-s-1_49 \
- -l boost_program_options-mgw46-mt-s-1_49 \
- -l boost_thread-mgw46-mt-s-1_49 \
+ -l boost_system-mgw46-mt-s-1_53 \
+ -l boost_filesystem-mgw46-mt-s-1_53 \
+ -l boost_program_options-mgw46-mt-s-1_53 \
+ -l boost_thread-mgw46-mt-s-1_53 \
  -l db_cxx \
  -l ssl \
  -l crypto
@@ -63,7 +63,7 @@ OBJS= \
     obj/noui.o
 
 
-all: 8coin.exe
+all: 8coind.exe
 
 obj/scrypt.o: scrypt.c
 	gcc -c $(CFLAGS) -o $@ $^
@@ -71,7 +71,7 @@ obj/scrypt.o: scrypt.c
 obj/%.o: %.cpp $(HEADERS)
 	g++ -c $(CFLAGS) -o $@ $<
 
-8coin.exe: $(OBJS:obj/%=obj/%)
+8coind.exe: $(OBJS:obj/%=obj/%)
 	g++ $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
@@ -83,7 +83,7 @@ test_8coin.exe: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
 	g++ $(CFLAGS) -o $@ $(LIBPATHS) $^ -lboost_unit_test_framework $(LIBS)
 
 clean:
-	-del /Q 8coin test_8coin
+	-del /Q 8coind test_8coin
 	-del /Q obj\*
 	-del /Q obj-test\*
 	-del /Q build.h

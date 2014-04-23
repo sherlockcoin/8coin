@@ -15,6 +15,6 @@ RPC port: 1888
 
 Block reward: 0.000008
 
-Premine: 0.8% (This was done for coin bounties, support and giveaways)
+Premine: No Premine
 
 More info to come
